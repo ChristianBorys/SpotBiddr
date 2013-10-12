@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     @user = User.all
   end
-
+  
   def show
     @user = User.find(params[:id])
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-          auto_login(@user)
+          #auto_login(@user)
           redirect_to root_path, :notice => "Account Created"
     else
       render :new
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 
 end
