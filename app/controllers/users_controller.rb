@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
+    @user = User.new(user_params)
     
     if @user.save
           auto_login(@user)
@@ -29,7 +29,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @
+
+    if @user.update_attributes(user_params)
+      redirect_to root_path, notice: "Your profile's been updated"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def user_params
