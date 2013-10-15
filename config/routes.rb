@@ -1,5 +1,7 @@
 Spotbiddr::Application.routes.draw do
   
+  get "events/new"
+  get "events/index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
